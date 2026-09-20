@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Brothers Gems & Jewelry</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#080808;
+  color:#fff;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#0b0b0b;
+  border-bottom:1px solid #d4af37;
+  padding:16px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#d4af37;
+  font-size:24px;
+  font-weight:bold;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.cart-btn{
+  background:transparent;
+  border:1px solid #d4af37;
+  color:#d4af37;
+  padding:10px 15px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.hero{
+  text-align:center;
+  padding:70px 20px 50px;
+  background:linear-gradient(180deg,#151515,#080808);
+}
+
+.hero h1{
+  color:#d4af37;
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#ccc;
+  line-height:1.6;
+}
+
+.section{
+  padding:50px 5%;
+}
+
+.title{
+  text-align:center;
+  color:#d4af37;
+  font-size:32px;
+  margin-bottom:35px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.product{
+  background:#141414;
+  border:1px solid #333;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.product:hover{
+  border-color:#d4af37;
+}
+
+.product img{
+  display:block;
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  background:#222;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-name{
+  font-size:19px;
+  margin-bottom:8px;
+}
+
+.price{
+  color:#d4af37;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.add-btn{
+  width:100%;
+  padding:12px;
+  background:#d4af37;
+  color:#080808;
+  border:0;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cart-section{
+  background:#101010;
+}
+
+.cart-box,
+.checkout-box{
+  max-width:900px;
+  margin:auto;
+  background:#151515;
+  border:1px solid #444;
+  border-radius:12px;
+  padding:25px;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:18px 0;
+  border-bottom:1px solid #333;
+}
+
+.item-name{
+  color:#d4af37;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.item-details{
+  color:#ccc;
+  line-height:1.6;
+}
+
+.remove-btn{
+  background:#7b2020;
+  color:#fff;
+  border:0;
+  padding:8px 12px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.total{
+  text-align:right;
+  color:#d4af37;
+  font-size:24px;
+  font-weight:bold;
+  margin:25px 0;
+}
+
+.main-btn{
+  width:100%;
+  padding:15px;
+  background:#d4af37;
+  color:#080808;
+  border:0;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.secondary-btn{
+  width:100%;
+  padding:13px;
+  background:transparent;
+  color:#d4af37;
+  border:1px solid #d4af37;
+  border-radius:7px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.checkout-section{
+  display:none;
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+  color:#d4af37;
+  margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea,
+select{
+  width:100%;
+  padding:13px;
+  background:#080808;
+  color:#fff;
+  border:1px solid #555;
+  border-radius:6px;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.empty{
+  text-align:center;
+  color:#aaa;
+  padding:30px;
+}
+
+footer{
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid #333;
+  color:#aaa;
+  line-height:2;
+}
+
+footer strong{
+  color:#d4af37;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(0,0,0,.85);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-box{
+  width:100%;
+  max-width:500px;
+  background:#151515;
+  border:1px solid #d4af37;
+  border-radius:12px;
+  padding:25px;
+}
+
+.modal-box h2{
+  color:#d4af37;
+  margin-bottom:20px;
+}
+
+.modal-group{
+  margin-bottom:18px;
+}
+
+.modal-group label{
+  display:block;
+  color:#ccc;
+  margin-bottom:7px;
+}
+
+.modal-btn{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:6px;
+  background:#d4af37;
+  color:#080808;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.modal-close{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:transparent;
+  color:#fff;
+  border:1px solid #555;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+@media(max-width:700px){
+
+  .logo{
+    font-size:18px;
+  }
+
+  nav a{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product img{
+    height:170px;
+  }
+
+  .product-info{
+    padding:12px;
+  }
+
+  .product-name{
+    font-size:16px;
+  }
+
+  .price{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    Two Brothers Gems
+  </div>
+
+  <nav>
+    <a onclick="goProducts()">Gems</a>
+
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>Two Brothers Gems & Jewelry</h1>
+
+  <p>
+    Premium gemstones and luxury jewelry with more than 20 years
+    of experience in the gemstone business.
+  </p>
+
+</section>
+
+
+<section class="section" id="products">
+
+  <h2 class="title">
+    Our Gemstones
+  </h2>
+
+  <div class="products" id="productGrid"></div>
+
+</section>
+
+
+<section class="section cart-section" id="cartSection">
+
+  <h2 class="title">
+    🛒 Your Cart
+  </h2>
+
+  <div class="cart-box">
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+      Total: ₹<span id="cartTotal">0.00</span>
+    </div>
+
+    <button class="main-btn" onclick="showCheckout()">
+      PROCEED TO CHECKOUT
+    </button>
+
+    <button class="secondary-btn" onclick="goProducts()">
+      CONTINUE SHOPPING
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="section checkout-section" id="checkoutSection">
+
+  <h2 class="title">
+    Checkout
+  </h2>
+
+  <div class="checkout-box">
+
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input id="customerName" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input id="customerPhone" type="tel">
+    </div>
+
+    <div class="form-group">
+      <label>Address *</label>
+      <textarea id="customerAddress"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Pincode *</label>
+      <input id="customerPincode" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Note</label>
+      <textarea id="customerNote"></textarea>
+    </div>
+
+    <button class="main-btn" onclick="placeOrder()">
+      PLACE ORDER
+    </button>
+
+    <button class="secondary-btn" onclick="backToCart()">
+      BACK TO CART
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p><strong>Two Brothers Gems & Jewelry</strong></p>
+
+  <p>Jaipur • Bangkok • Bangalore</p>
+
+  <p>WhatsApp: +91 8317469749</p>
+
+  <p>Email: twobrothersgems3@gmail.com</p>
+
+  <p>Instagram: @two.brothers.gems</p>
+
+</footer>
+
+
+<!-- ADD TO CART MODAL -->
+
+<div class="modal" id="productModal">
+
+  <div class="modal-box">
+
+    <h2 id="modalProductName">
+      Add Product
+    </h2>
+
+    <div class="modal-group">
+
+      <label>Shape</label>
+
+      <select id="shape">
+
+        <option>Oval</option>
+        <option>Round</option>
+        <option>Emerald Cut</option>
+        <option>Princess Cut</option>
+        <option>Pear</option>
+        <option>Heart</option>
+        <option>Cushion</option>
+        <option>Marquise</option>
+        <option>Radiant Cut</option>
+        <option>Asscher Cut</option>
+        <option>Baguette</option>
+        <option>Trillion</option>
+        <option>Octagon</option>
+        <option>Square</option>
+        <option>Rectangle</option>
+        <option>Cabochon</option>
+        <option>Freeform</option>
+
+      </select>
+
+    </div>
+
+    <div class="modal-group">
+
+      <label>Carat</label>
+
+      <select id="carat"></select>
+
+    </div>
+
+    <button class="modal-btn" onclick="confirmAdd()">
+      ADD TO CART
+    </button>
+
+    <button class="modal-close" onclick="closeModal()">
+      CANCEL
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SUPABASE LIBRARY -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* ================================
+   SUPABASE
+================================ */
+
+const SUPABASE_URL =
+"https://mwtechejxqqgbbwhvncz.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_w-NfLeaiz7OOd74A2VQ6jw_aHjsHFQC";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* ================================
+   PRODUCTS
+================================ */
+
+const products = [
+
+  {
+    name:"Pink Stone",
+    price:700,
+    image:"images/12309.jpg"
+  },
+
+  {
+    name:"Black Diamond",
+    price:1500,
+    image:"images/12306.jpg"
+  },
+
+  {
+    name:"Peridot",
+    price:1000,
+    image:"images/12303.jpg"
+  },
+
+  {
+    name:"White Diamond",
+    price:7000,
+    image:"images/12300.jpg"
+  },
+
+  {
+    name:"Natural Amethyst",
+    price:1400,
+    image:"images/12297.jpg"
+  },
+
+  {
+    name:"Ruby",
+    price:1250,
+    image:"images/12291.jpg"
+  },
+
+  {
+    name:"Yellow Sapphire",
+    price:1500,
+    image:"images/12288.jpg"
+  },
+
+  {
+    name:"Zirconia",
+    price:900,
+    image:"images/12282.jpg"
+  },
+
+  {
+    name:"Orange Stone",
+    price:800,
+    image:"images/12279.jpg"
+  },
+
+  {
+    name:"Firoza / Turquoise",
+    price:300,
+    image:"images/12276.jpg"
+  },
+
+  {
+    name:"Moissanite",
+    price:1300,
+    image:"images/12300.jpg"
+  }
+
+];
+
+
+/* ================================
+   VARIABLES
+================================ */
+
+let cart = [];
+
+let selectedProduct = null;
+
+
+/* ================================
+   CARAT OPTIONS
+================================ */
+
+const carat =
+document.getElementById("carat");
+
+for(
+  let i=1;
+  i<=280;
+  i++
+){
+
+  const value =
+  (i/10).toFixed(1);
+
+  const option =
+  document.createElement("option");
+
+  option.value =
+  value;
+
+  option.textContent =
+  value+" ct";
+
+  carat.appendChild(option);
+}
+
+
+/* ================================
+   DISPLAY PRODUCTS
+================================ */
+
+function displayProducts(){
+
+  const grid =
+  document.getElementById(
+    "productGrid"
+  );
+
+  grid.innerHTML="";
+
+  products.forEach(
+    function(product,index){
+
+      const card =
+      document.createElement("div");
+
+      card.className =
+      "product";
+
+      card.innerHTML = `
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
+
+        <div class="product-info">
+
+          <div class="product-name">
+            ${product.name}
+          </div>
+
+          <div class="price">
+            ₹${product.price} / carat
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addProduct(${index})"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      `;
+
+      grid.appendChild(card);
+
+    }
+  );
+
+}
+
+
+/* ================================
+   ADD PRODUCT
+================================ */
+
+function addProduct(index){
+
+  selectedProduct =
+  products[index];
+
+  document.getElementById(
+    "modalProductName"
+  ).textContent =
+  "Add "+selectedProduct.name;
+
+  document.getElementById(
+    "productModal"
+  ).style.display =
+  "flex";
+
+}
+
+
+/* ================================
+   CONFIRM ADD
+================================ */
+
+function confirmAdd(){
+
+  if(!selectedProduct){
+    return;
+  }
+
+  const shape =
+  document.getElementById(
+    "shape"
+  ).value;
+
+  const carat =
+  parseFloat(
+    document.getElementById(
+      "carat"
+    ).value
+  );
+
+  cart.push({
+
+    name:selectedProduct.name,
+
+    price:selectedProduct.price,
+
+    shape:shape,
+
+    carat:carat,
+
+    total:
+    selectedProduct.price *
+    carat
+
+  });
+
+  closeModal();
+
+  renderCart();
+
+  openCart();
+
+}
+
+
+/* ================================
+   CLOSE MODAL
+================================ */
+
+function closeModal(){
+
+  document.getElementById(
+    "productModal"
+  ).style.display =
+  "none";
+
+  selectedProduct =
+  null;
+
+}
+
+
+/* ================================
+   CART
+================================ */
+
+function renderCart(){
+
+  const container =
+  document.getElementById(
+    "cartItems"
+  );
+
+  const count =
+  document.getElementById(
+    "cartCount"
+  );
+
+  const totalElement =
+  document.getElementById(
+    "cartTotal"
+  );
+
+  count.textContent =
+  cart.length;
+
+  container.innerHTML="";
+
+  let total=0;
+
+
+  if(cart.length===0){
+
+    container.innerHTML=
+    `<div class="empty">
+      Your cart is empty.
+    </div>`;
+
+  }
+
+
+  cart.forEach(
+    function(item,index){
+
+      total +=
+      item.total;
+
+      const div =
+      document.createElement("div");
+
+      div.className =
+      "cart-item";
+
+      div.innerHTML = `
+
+        <div>
+
+          <div class="item-name">
+            ${item.name}
+          </div>
+
+          <div class="item-details">
+
+            Shape: ${item.shape}<br>
+
+            Carat: ${item.carat} ct<br>
+
+            ₹${item.price} / carat<br>
+
+            Item Total:
+            ₹${item.total.toFixed(2)}
+
+          </div>
+
+        </div>
+
+        <button
+          class="remove-btn"
+          onclick="removeItem(${index})"
+        >
+          REMOVE
+        </button>
+
+      `;
+
+      container.appendChild(div);
+
+    }
+  );
+
+
+  totalElement.textContent =
+  total.toFixed(2);
+
+}
+
+
+/* ================================
+   REMOVE
+================================ */
+
+function removeItem(index){
+
+  cart.splice(
+    index,
+    1
+  );
+
+  renderCart();
+
+}
+
+
+/* ================================
+   OPEN CART
+================================ */
+
+function openCart(){
+
+  document.getElementById(
+    "cartSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================================
+   PRODUCTS
+================================ */
+
+function goProducts(){
+
+  document.getElementById(
+    "products"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+function showCheckout(){
+
+  if(cart.length===0){
+
+    alert(
+      "Your cart is empty."
+    );
+
+    return;
+  }
+
+  document.getElementById(
+    "checkoutSection"
+  ).style.display =
+  "block";
+
+  document.getElementById(
+    "checkoutSection"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================================
+   BACK TO CART
+================================ */
+
+function backToCart(){
+
+  document.getElementById(
+    "checkoutSection"
+  ).style.display =
+  "none";
+
+  openCart();
+
+}
+
+
+/* ================================
+   PLACE ORDER
+================================ */
+
+async function placeOrder(){
+
+  if(cart.length===0){
+
+    alert(
+      "Your cart is empty."
+    );
+
+    return;
+  }
+
+
+  const name =
+  document.getElementById(
+    "customerName"
+  ).value.trim();
+
+
+  const phone =
+  document.getElementById(
+    "customerPhone"
+  ).value.trim();
+
+
+  const address =
+  document.getElementById(
+    "customerAddress"
+  ).value.trim();
+
+
+  const pincode =
+  document.getElementById(
+    "customerPincode"
+  ).value.trim();
+
+
+  const note =
+  document.getElementById(
+    "customerNote"
+  ).value.trim();
+
+
+  if(
+    !name ||
+    !phone ||
+    !address ||
+    !pincode
+  ){
+
+    alert(
+      "Please fill all required customer details."
+    );
+
+    return;
+  }
+
+
+  const orderID =
+  "TBG-"+Date.now();
+
+
+  let total=0;
+
+
+  cart.forEach(
+    function(item){
+
+      total +=
+      item.total;
+
+    }
+  );
+
+
+  try{
+
+    /* MAIN ORDER */
+
+    const result =
+    await supabaseClient
+    .from("orders")
+    .insert([{
+
+      order_id:orderID,
+
+      customer_name:name,
+
+      phone:phone,
+
+      address:address,
+
+      pincode:pincode,
+
+      product:
+      cart.map(
+        function(item){
+          return item.name;
+        }
+      ).join(", "),
+
+      quantity:
+      cart.length,
+
+      unit:"items",
+
+      price:total,
+
+      total_amount:total,
+
+      status:"Pending",
+
+      note:
+      note || null
+
+    }]);
+
+
+    if(result.error){
+
+      console.error(
+        result.error
+      );
+
+      alert(
+        "Could not save the order."
+      );
+
+      return;
+    }
+
+
+    /* ORDER ITEMS */
+
+    const orderItems =
+    cart.map(
+      function(item){
+
+        return {
+
+          order_id:orderID,
+
+          product:item.name,
+
+          shape:item.shape,
+
+          quantity:item.carat,
+
+          unit:"carat",
+
+          price:item.price,
+
+          total_amount:item.total
+
+        };
+
+      }
+    );
+
+
+    const itemResult =
+    await supabaseClient
+    .from("order_items")
+    .insert(
+      orderItems
+    );
+
+
+    if(itemResult.error){
+
+      console.error(
+        itemResult.error
+      );
+
+      alert(
+        "Order saved, but item details failed."
+      );
+
+      return;
+    }
+
+
+    /* WHATSAPP */
+
+    let itemsText="";
+
+
+    cart.forEach(
+      function(item,index){
+
+        itemsText +=
+
+        (index+1)+". "+
+
+        item.name+
+        " | "+
+
+        item.shape+
+        " | "+
+
+        item.carat+
+        " ct | ₹"+
+
+        item.total.toFixed(2)+
+        "\n";
+
+      }
+    );
+
+
+    const message =
+
+    "Hello Two Brothers Gems & Jewelry,\n\n"+
+
+    "Order ID: "+
+    orderID+
+    "\n\n"+
+
+    "Products:\n"+
+    itemsText+
+
+    "\nTotal: ₹"+
+    total.toFixed(2)+
+
+    "\n\nName: "+
+    name+
+
+    "\nPhone: "+
+    phone+
+
+    "\nAddress: "+
+    address+
+
+    "\nPincode: "+
+    pincode+
+
+    "\nNote: "+
+    (note || "None")+
+
+    "\n\nPlease confirm my order.";
+
+
+    window.open(
+
+      "https://wa.me/918317469749?text="+
+      encodeURIComponent(message),
+
+      "_blank"
+
+    );
+
+
+    alert(
+      "Order saved successfully!\nOrder ID: "+
+      orderID
+    );
+
+
+    cart=[];
+
+    renderCart();
+
+
+    document.getElementById(
+      "checkoutSection"
+    ).style.display =
+    "none";
+
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Something went wrong."
+    );
+
+  }
+
+}
+
+
+/* ================================
+   START
+================================ */
+
+displayProducts();
+
+renderCart();
+
+</script>
+
+</body>
+</html>
